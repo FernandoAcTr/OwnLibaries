@@ -28,13 +28,7 @@ public class Conexion {
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public static ResultSet runQuerySQL(String sentencia) throws SQLException {
-        Statement statement = connection.createStatement();
-        ResultSet resultado = statement.executeQuery(sentencia);
-        return resultado;
-    }
+    } 
 
     public static void Disconnect() {
         try {
