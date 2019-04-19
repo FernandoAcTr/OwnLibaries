@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Conexion {
+public class MySQL {
 
     private static Connection connection = null;
     private static final String database = "wordl_innodb";
@@ -24,23 +24,17 @@ public class Conexion {
             connection = DriverManager.getConnection(url, user, password);
             System.out.println("Conection initialized...");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public static ResultSet runQuerySQL(String sentencia) throws SQLException {
-        Statement statement = connection.createStatement();
-        ResultSet resultado = statement.executeQuery(sentencia);
-        return resultado;
-    }
+    } 
 
     public static void Disconnect() {
         try {
             connection.close();
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -48,7 +42,7 @@ public class Conexion {
         try {
             return connection.isClosed();
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
             return true;
         }
     }
