@@ -128,6 +128,17 @@ public class PDFReport {
         document.add(p);
     }
 
+     public void addImage(String path, String description) throws MalformedURLException {
+        Image image = new Image(ImageDataFactory.create(path));
+        image.setAutoScale(true);
+        Paragraph p = new Paragraph();
+        p.setTextAlignment(TextAlignment.CENTER);
+        if(description != null)
+            p.add(description + "\n");
+        p.add(image);
+        document.add(p);
+    }
+
     public void closeDocument(){
         //Close document
         document.close();
